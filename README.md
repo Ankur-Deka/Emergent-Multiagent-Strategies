@@ -44,11 +44,9 @@ I have provided some pretrained models in `marlsave` directory
 For any queries, feel free to raise an issue or contact me at adeka@cs.cmu.edu or ankurnet1996@gmail.com.
 
 ## Acknowledgment
-The environment is built up on MAPE:
-https://github.com/openai/multiagent-particle-envs
+The environment is built up on [MAPE](https://github.com/openai/multiagent-particle-envs)
 
-The algorithm for this repo is built up on marl_transfer:
-https://github.com/sumitsk/marl_transfer
+The algorithm for this repo is built up on [marl_transfer](https://github.com/sumitsk/marl_transfer)
 
 
 ## License
