@@ -1,0 +1,35 @@
+python eval.py --env-name simple_spread --num-agents 3 --entity-mp --load-dir ./models/ss/na5_uc.pt --test --render
+
+don't use --entity-mp for simple_formation and simple_line
+
+Environment files:
+malib/environments/fortattack.py: this has the final env class. From here the core and fortattack_env_v1 files are imported from within gym-fortattack folder
+
+Setting up:
+1) setting_up (folder): contains the environment information
+	- environment.yml: yml file to recreate the env (not sure if it will work, some things might have been set in $PYTHONPATH or installed with pip from local files. Eg. gym-fortattack)
+	- env_packages.txt: output of conda env list from active environment
+2) MARLFort: the conda environment
+
+Files:
+-----
+1) Parent Directory:
+	- train_fortattack.py: file to train the model
+	- mpnn.py: contains GNN for policy net along with attention code
+	- test_fortattack.py: file to test the model
+
+Running:
+-------
+1)	conda activate MARLFort
+	python train_fortattack.py --save-dir tmp_13
+	python train_fortattack.py --ckpt 570 --load-dir tmp_13 --continue-training
+2)  training guards only on pre-trained attackers:
+	python train_fortattack_v2.py --train-guards-only --pretrained-guard --guard-load-dir tmp_11 --guard-ckpt 2520 --attacker-load-dir tmp_11 --attacker-ckpts 220 650 1240 1600 2520 --save-dir tmp_16 --render
+
+3)	tensorboard --logdir marlsave/save_new/tmp 
+4)	Testing
+	python test_fortattack.py --test --load-dir tmp_1 --ckpt 2520 --out-file 'out_files/1'
+	 python test_fortattack_v2.py --test --train-guards-only --num-eval-episodes 10 --load-dir tmp_16 --ckpt 5050 --attacker-load-dir tmp_11 --attacker-ckpts 2520 --render
+
+
+Output
