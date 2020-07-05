@@ -14,13 +14,19 @@ See `arguments.py` file for the list of various command line arguments one can s
  -->
 ## Training
 
-### Joint Trainng
+### Joint Training
 `python train_fortattack.py --save-dir tmp_3`
 
-### Ensemble training of Guards
-`python train_fortattack_v2.py --train-guards-only --pretrained-guard --guard-load-dir tmp_11 --guard-ckpt 2520 --attacker-load-dir tmp_11 --attacker-ckpts 220 650 1240 1600 2520 --save-dir tmp_16 --render`
+### Ensemble Training of Guards
+`python train_fortattack_v2.py --train-guards-only --pretrained-guard --guard-load-dir tmp_1 --guard-ckpt 2520 --attacker-load-dir tmp_1 --attacker-ckpts 220 650 1240 1600 2520 --save-dir tmp_4 --render`
 
 ## Testing
+
+### Joint training results
+`python test_fortattack.py --test --load-dir tmp_1 --ckpt 2520`
+
+### Ensemble training results
+`python test_fortattack_v2.py --test --train-guards-only --num-eval-episodes 10 --load-dir tmp_2 --ckpt 5050 --attacker-load-dir tmp_1 --attacker-ckpts 2520 --render`
 
 ### Trained models
 I have provided some pretrained models in `marlsave` directory
@@ -31,13 +37,7 @@ I have provided some pretrained models in `marlsave` directory
 	1. `ep1600`: Sneaking strategy of attackers
 	1. `ep2520`: Smartly spreading strategy of guards
 
-2.  `tmp_1/ep5050.pt`: Guards' policy after ensemble training
-
-### Joint training results
-`python test_fortattack.py --test --load-dir tmp_1 --ckpt 2520`
-
-### Ensemble training results
-`python test_fortattack_v2.py --test --train-guards-only --num-eval-episodes 10 --load-dir tmp_2 --ckpt 5050 --attacker-load-dir tmp_1 --attacker-ckpts 2520 --render`
+1.  `tmp_1/ep5050.pt`: Guards' policy after ensemble training
 
 
 ## Contact
