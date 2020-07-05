@@ -6,13 +6,15 @@ Robotics Institute, Carnegie Mellon University
 
 This is the official repository of the paper 'Natural Emergence of Heterogeneous Strategies in Artificially Intelligent Competitive Teams'.
 
+![](out_files/1.gif) ![](out_files/3.gif) ![](out_files/2.gif)
+
 ## Installation
 See `requirements.txt` file for the list of dependencies. Create an anaconda environment or virtualenv with python 3.6 and setup everything by executing `pip install -r requirements.txt`. 
 
 ## Training
 
 ### Joint Training
-`python train_fortattack.py --save-dir tmp_3`\\
+`python train_fortattack.py --save-dir tmp_3`<br />
 See `arguments.py` file for the list of various command line arguments one can set while running the scripts. 
 
 
