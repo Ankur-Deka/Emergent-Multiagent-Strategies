@@ -5,28 +5,28 @@
 Robotics Institute, Carnegie Mellon University
 
 This is the official repository of the paper 'Natural Emergence of Heterogeneous Strategies in Artificially Intelligent Competitive Teams'.
-<!-- 
-## Installation
-See `requirements.txt` file for the list of dependencies. Create a virtualenv with python 3.5 and setup everything by executing `pip install -r requirements.txt`.  -->
 
-<!-- ## Examples
-See `arguments.py` file for the list of various command line arguments one can set while running scripts. 
- -->
+## Installation
+See `requirements.txt` file for the list of dependencies. Create an anaconda environment or virtualenv with python 3.6 and setup everything by executing `pip install -r requirements.txt`. 
+
 ## Training
 
 ### Joint Training
-`python train_fortattack.py --save-dir tmp_3`
+`python train_fortattack.py --save-dir tmp_3`\\
+See `arguments.py` file for the list of various command line arguments one can set while running the scripts. 
+
 
 ### Ensemble Training of Guards
 `python train_fortattack_v2.py --train-guards-only --pretrained-guard --guard-load-dir tmp_1 --guard-ckpt 2520 --attacker-load-dir tmp_1 --attacker-ckpts 220 650 1240 1600 2520 --save-dir tmp_4 --render`
 
+
 ## Testing
 
 ### Joint training results
-`python test_fortattack.py --test --load-dir tmp_1 --ckpt 2520`
+`python test_fortattack.py --test --load-dir tmp_1 --ckpt 220`
 
 ### Ensemble training results
-`python test_fortattack_v2.py --test --train-guards-only --num-eval-episodes 10 --load-dir tmp_2 --ckpt 5050 --attacker-load-dir tmp_1 --attacker-ckpts 2520 --render`
+`python test_fortattack_v2.py --test --train-guards-only --num-eval-episodes 10 --load-dir tmp_2 --ckpt 5050 --attacker-load-dir tmp_1 --attacker-ckpts 220 --render`
 
 ### Trained models
 I have provided some pretrained models in `marlsave` directory
