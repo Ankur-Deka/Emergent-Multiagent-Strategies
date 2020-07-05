@@ -6,7 +6,7 @@ Robotics Institute, Carnegie Mellon University
 
 This is the official repository of the paper 'Natural Emergence of Heterogeneous Strategies in Artificially Intelligent Competitive Teams'.
 
-![](out_files/1.gif) ![](out_files/3.gif) ![](out_files/2.gif)
+![](out_files/1.gif | width=80) ![](out_files/3.gif | width=80) ![](out_files/2.gif | width=80)
 
 ## Installation
 See `requirements.txt` file for the list of dependencies. Create an anaconda environment or virtualenv with python 3.6 and setup everything by executing `pip install -r requirements.txt`. 
