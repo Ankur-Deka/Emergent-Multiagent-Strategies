@@ -11,6 +11,7 @@ This is the official repository of the paper 'Natural Emergence of Heterogeneous
 	<img src="out_files/3.gif" width="250" height="250"/>
 	<img src="out_files/2.gif" width="250" height="250"/>
 </p>
+<img src="out_files/Evolution_of_starategies.png" width="750"/>
 
 ## Installation
 See `requirements.txt` file for the list of dependencies. Create an anaconda environment or virtualenv with python 3.6 and setup everything by executing `pip install -r requirements.txt`. 
