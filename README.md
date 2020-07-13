@@ -47,6 +47,16 @@ I have provided some pretrained models in `marlsave` directory
 1.  `tmp_2/ep5050.pt`: Guards' policy after ensemble training
 
 
+## Citing
+If you use our code in your research, please cite our paper: <br/>
+`@article{deka2020natural,
+  title={Natural Emergence of Heterogeneous Strategies in Artificially Intelligent Competitive Teams},
+  author={Deka, Ankur and Sycara, Katia},
+  journal={arXiv preprint arXiv:2007.03102},
+  year={2020}
+}
+`
+
 ## Contact
 For any queries, feel free to raise an issue or contact me at adeka@cs.cmu.edu or ankurnet1996@gmail.com.
 
