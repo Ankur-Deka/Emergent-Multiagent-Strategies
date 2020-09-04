@@ -4,7 +4,7 @@
 
 Robotics Institute, Carnegie Mellon University
 
-This is the official repository of the paper [Natural Emergence of Heterogeneous Strategies in Artificially Intelligent Competitive Teams](https://arxiv.org/abs/2007.03102), presented in a [spotlight talk](https://youtu.be/ltHgKYc0F-E) in Robotics Science and Systems (RSS) 2020 workshop on Heterogeneous Multi-Robot Task Allocation adn Coordination. Increasingly complex multiagent strategies can emerge naturally through competition in a mixed cooperative-competitive environment.
+This is the official repository of the paper [Natural Emergence of Heterogeneous Strategies in Artificially Intelligent Competitive Teams](https://arxiv.org/abs/2007.03102), presented in a [spotlight talk](https://youtu.be/ltHgKYc0F-E) in Robotics Science and Systems (RSS) 2020 workshop on Heterogeneous Multi-Robot Task Allocation and Coordination. Increasingly complex multiagent strategies can emerge naturally through competition in a mixed cooperative-competitive environment.
 
 <p float="center">
 	<img src="out_files/1.gif" width="250" height="250"/>
