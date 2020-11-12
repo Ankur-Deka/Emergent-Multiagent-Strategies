@@ -243,8 +243,10 @@ class Learner(object):
             agent.update_rollout(agent_obs, reward[i], masks[i])
 
     def load_models(self, policies_list):
-        for agent, policy in zip(self.all_agents, policies_list):
-            agent.load_model(policy)
+        # for agent, policy in zip(self.all_agents, policies_list):
+        #     agent.load_model(policy)
+        self.teams_list[0][0].load_model(policies_list[0])   # suffient to load policy once for attackers
+        self.teams_list[1][0].load_model(policies_list[-1])  # sufficient to load policy once for guards
 
     def eval_act(self, obs, recurrent_hidden_states, mask):
         # used only while evaluating policies. Assuming that agents are in order of team!

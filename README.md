@@ -14,7 +14,12 @@ This is the official repository of the paper [Natural Emergence of Heterogeneous
 <img src="out_files/Evolution_of_starategies.png" width="750"/>
 
 ## Installation
-See `requirements.txt` file for the list of dependencies. Create an anaconda environment or virtualenv with python 3.6 and setup everything by executing `pip install -r requirements.txt`. 
+I have tested the code on Ubuntu 16.04 and 18.04. See `requirements.txt` file for the list of dependencies. Create an anaconda environment or virtualenv with python 3.6 and setup everything by executing `pip install -r requirements.txt`. 
+```
+conda create -n fortattack python=3.6 pip
+conda activate fortattack
+pip install -r requirements.txt
+```
 
 ## Training
 

@@ -8,6 +8,8 @@ import time, os
 from pygame import mixer  # Load the popular external library
 import pyglet
 from pyglet.gl import *
+import copy
+import cv2
 
 # environment for all agents in the multiagent world
 # currently code assumes that no agents will be created/destroyed at runtime!
@@ -304,6 +306,64 @@ class FortAttackGlobalEnv(gym.Env):
         self.render_geoms = None
         self.render_geoms_xform = None
 
+    def rgb2bgr(self, frame):
+        temp = copy.deepcopy(frame[:,:,0])
+        frame[:,:,0] = frame[:,:,2]
+        frame[:,:,2] = temp
+        # frame = cv2.resize(frame, (704, 576)) 
+        return frame
+
+    # saving frames as images
+    def saveFrame(self, attn_list, path):
+        frame = self.render(attn_list, mode='rgb_array')[0]
+        frame = self.rgb2bgr(frame)
+        cv2.imwrite(path, frame)
+
+    # following for recording
+    def startRecording(self, path):
+        self.path = path
+        frame = self.render(mode='rgb_array')[0]
+        # print('frame', len(frame), frame[0].shape)
+        h,w,c = frame.shape
+        print('hwc', h,w,c)
+
+        if self.video_format=='gif':
+            self.video = imageio.get_writer(self.path, mode='I')
+            self.video.append_data(frame)
+        else:
+            self.video = cv2.VideoWriter(self.path,self.fourcc, self.fps, (w,h))
+            # voObj = cv2.VideoWriter('output.mp4', 0x00000021, 15.0, (1280,360))
+            self.video.write(self.rgb2bgr(frame))
+    
+    def rgb2bgr(self, frame):
+        temp = copy.deepcopy(frame[:,:,0])
+        frame[:,:,0] = frame[:,:,2]
+        frame[:,:,2] = temp
+        # frame = cv2.resize(frame, (704, 576)) 
+        return frame
+
+    def recordFrame(self):
+        frame = self.render(mode='rgb_array')[0]
+        if self.video_format=='gif':
+            self.video.append_data(frame)
+        else:
+            frame = self.rgb2bgr(frame)
+            self.video.write(frame)
+    
+    # saving frames as images
+    def saveFrame(self, path):
+        frame = self.render(mode='rgb_array')[0]
+        frame = self.rgb2bgr(frame)
+        cv2.imwrite(path, frame)
+
+    
+    def endVideo(self):
+        if self.video_format=='gif':
+            self.video.close()
+        else:
+            self.video.release()
+
+
     # render environment
     def render(self, attn_list = None, mode='human', close=False):
         # attn_list = [[teamates_attn, opp_attn] for each team]
@@ -528,6 +588,7 @@ class FortAttackGlobalEnv(gym.Env):
             # results.append(
             self.viewers[i].render(return_rgb_array = False)#mode=='human')    # actual rendering
             #)
+            results.append(self.viewers[i].render(return_rgb_array = mode=='rgb_array'))
         if self.shot and not self.prevShot:
             mixer.music.play()
         self.prevShot = self.shot

@@ -27,7 +27,7 @@ def get_args():
     parser.add_argument('--arena-size', type=int, default=1, help='size of arena')
 
     # evaluation
-    parser.add_argument('--num-eval-episodes', type=int, default=1, help='number of episodes to evaluate with')
+    parser.add_argument('--num-eval-episodes', type=int, default=10, help='number of episodes to evaluate with')
     parser.add_argument('--dist-threshold', type=float, default=0.1, help='distance within landmark is considered covered (for simple_spread)')
     parser.add_argument('--render', action='store_true', default = False)
     parser.add_argument('--record-video', action='store_true', default=False, help='record evaluation video')
@@ -63,6 +63,8 @@ def get_args():
     parser.add_argument('--eval-interval', default=100, type=int)
     parser.add_argument('--continue-training', default = False, action='store_true')
     parser.add_argument('--out-file', type = str, default = None, help='output file for storing observations')
+    parser.add_argument('--record', action = 'store_true', help = 'Record video at test time')
+    parser.add_argument('--video-format', type = str, default = 'gif', help='format of video')
 
     # we always set these to TRUE, so automating this
     parser.add_argument('--no-clipped-value-loss', action='store_true')

@@ -45,7 +45,7 @@ def test_fortattack(args, seed, policies_list, ob_rms):
 
     # start simulations
     start = datetime.datetime.now()
-    for j in range(1):   # iterations
+    for j in range(args.num_eval_episodes+100):   # iterations
         end_pts = []    # maintain a list of time end points of episodes that can be used in master.wrap_horizon. Each entry is (where the episode got over) + 1
         episode_rewards = torch.zeros([args.num_processes, n], device=args.device)
         
@@ -57,8 +57,16 @@ def test_fortattack(args, seed, policies_list, ob_rms):
 
         # print('obs', obs[:,0])
         master.initialize_obs(obs)
+        done = False
         step = 0
-        while step < 300:  # data collection steps in each iteration
+
+        # if args.render():
+        #     video_path = 'out_files/videos'
+        #     self.eval_env.startRecording(video_path)
+        #     if self.args.record_video:
+        #             self.eval_env.recordFrame()
+
+        while not done:  # data collection steps in each iteration
             # print('step', step, 'train_fortattack')
             masks = torch.FloatTensor(obs[:,0])		##* check the values of masks, agent alive or dead
             if not args.no_cuda:
@@ -76,7 +84,10 @@ def test_fortattack(args, seed, policies_list, ob_rms):
             # print(reward)
 
             env.render(attn_list)	# attn_list = [[teamates_attn, opp_attn] for each team]
-            time.sleep(0.06)
+
+            path = 'out_files/Frames/generalize_5_{}_{}.png'.format(j,step)
+            # env.saveFrame(attn_list, path)
+            # time.sleep(0.06)
 
             
             # obs, newdead = obs_newdead
